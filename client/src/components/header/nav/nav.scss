@@ -1,0 +1,59 @@
+.nav-container {
+  align-items: center;
+  background: linear-gradient(
+    90deg,
+    rgba(252, 235, 135, 1) 0%,
+    rgba(230, 225, 88, 1) 35%,
+    rgba(211, 212, 55, 1) 100%
+  );
+  .left {
+    h2 {
+      color: #d40511;
+      margin-left: 30px;
+      font-weight: bolder;
+      cursor: pointer;
+    }
+  }
+  .center {
+    position: relative;
+    ul {
+      list-style: none;
+      justify-content: center;
+      align-items: center;
+      li {
+        a {
+          display: block;
+          text-decoration: none;
+          font-weight: bold;
+          color: black;
+          margin: 13px 8px 0 8px;
+          cursor: pointer;
+        }
+      }
+    }
+    .main-track {
+      height: 150px;
+      position: absolute;
+      left: 0;
+
+      .track {
+        visibility: hidden;
+        width: 500px;
+        height: 0%;
+        height: 0px;
+        padding: 15px;
+        background-color: white;
+        transition: 1s all ease;
+      }
+      .track-effect {
+        visibility: visible;
+        height: 100%;
+      }
+    }
+  }
+  .right {
+    .search {
+      margin-right: 30px;
+    }
+  }
+}

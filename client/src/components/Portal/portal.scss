@@ -1,0 +1,54 @@
+.main-portal-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .portal-container {
+    width: 40%;
+    border: 1px solid teal;
+    padding: 20px;
+    .option {
+      display: flex;
+      justify-content: center;
+      h1 {
+        margin: 0 20px;
+        color: teal;
+        &:hover {
+          border-bottom: 1px solid teal;
+        }
+      }
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 30px;
+      input {
+        margin-top: 10px;
+        padding: 10px;
+        border: none;
+        border-bottom: 1px solid gray;
+        border-radius: 5px;
+      }
+      .input-pass {
+        display: flex;
+        align-items: center;
+        position: relative;
+        div {
+          position: absolute;
+          top: 35%;
+          right: 0;
+        }
+      }
+      button {
+        margin-top: 20px;
+        padding: 7px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: teal;
+        color: white;
+      }
+    }
+  }
+}

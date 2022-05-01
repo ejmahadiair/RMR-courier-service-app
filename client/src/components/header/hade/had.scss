@@ -1,0 +1,26 @@
+.had-container {
+  justify-content: space-between;
+  .left {
+    h1 {
+      margin-left: 30px;
+      font-size: 50px;
+      font-weight: bolder;
+      color: #d40511;
+      cursor: pointer;
+    }
+  }
+  .right {
+    margin-right: 30px;
+    ul {
+      list-style: none;
+      li {
+        a {
+          display: block;
+          text-decoration: none;
+          color: black;
+          margin: 13px 8px 0 8px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.user-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 15px 10px;
+  background-color: teal;
+  color: white;
+  border-radius: 5px;
+
+  .update {
+    cursor: pointer;
+    .edit {
+      color: skyblue;
+    }
+    .delete {
+      color: tomato;
+    }
+  }
+}

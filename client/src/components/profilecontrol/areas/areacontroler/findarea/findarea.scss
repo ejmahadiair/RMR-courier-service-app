@@ -1,0 +1,46 @@
+.find-area-container {
+  margin: 20px;
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+    input {
+      padding: 10px;
+      border: none;
+      border-radius: 7px;
+      background-color: transparent;
+      border-bottom: 1px solid teal;
+    }
+    button {
+      padding: 8px 15px;
+      width: 100px;
+      margin: 15px auto;
+      border: none;
+      border-radius: 5px;
+      background-color: teal;
+      color: white;
+    }
+  }
+  .show-area-box {
+    width: 95%;
+    height: 50px;
+    margin: 10px auto;
+    background-color: #fff;
+    color: teal;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid teal;
+    border-radius: 10px;
+    transition: 0.5s ease all;
+    .delete-area {
+      cursor: pointer;
+      color: tomato;
+    }
+    &:hover {
+      box-shadow: 1px 1px 17px -4px #000000;
+      transform: scale(1.01);
+    }
+  }
+}

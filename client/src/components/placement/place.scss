@@ -1,0 +1,68 @@
+.place-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .msg {
+    position: absolute;
+    top: 120px;
+    left: 410px;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: teal;
+    color: white;
+    margin-top: 10px;
+  }
+  h1 {
+    color: teal;
+  }
+  form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    input {
+      margin: 10px;
+      padding: 8px;
+    }
+    textarea {
+      margin: 10px;
+      padding: 5px;
+    }
+    .buttons {
+      margin: 10px;
+      display: flex;
+      justify-content: space-between;
+      button {
+        padding: 8px 20px;
+        border: none;
+        background-color: teal;
+        border-radius: 5px;
+        margin: 10px;
+        color: white;
+      }
+    }
+    .product-type {
+      margin: 10px;
+    }
+    .destination {
+      margin: 10px 0;
+      button {
+        padding: 8px 17px;
+        margin: 0 10px;
+        border: 1px solid teal;
+        border-radius: 5px;
+        background-color: transparent;
+        transition: 0.6s ease;
+        &:hover {
+          background-color: teal;
+          color: white;
+        }
+      }
+    }
+    .select-area {
+      margin: 10px;
+      .incity-address {
+        margin: 5px 0 5px -10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.dashboard-container {
+  .row {
+    padding: 10px;
+    justify-content: center;
+    .items {
+      padding: 10px;
+      background-color: white;
+      margin: 10px;
+      width: 220px;
+      border-radius: 10px;
+      .item {
+        display: flex;
+      }
+    }
+  }
+}
