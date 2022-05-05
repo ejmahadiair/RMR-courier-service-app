@@ -18,7 +18,19 @@ const getUser = async (req, res, next) => {
     return res.status(200).json({ alluser });
   }
 };
-
+//get marchents/company
+const getmarchents = async (req, res, next) => {
+  let muser;
+  try {
+    muser = await User.find({ status: "marchent" });
+  } catch (e) {
+    return console.log("Problem in server get marchent: ", e);
+  }
+  if (!muser) {
+    return res.status(404).json({ message: "user not found" });
+  }
+  return res.status(200).json({ muser });
+};
 //get spacific user status
 const getuserbyid = async (req, res, next) => {
   let userId = req.body.id;
@@ -34,6 +46,26 @@ const getuserbyid = async (req, res, next) => {
       .json({ message: "Did not found any user by this Id" });
   }
   return res.status(200).json({ message: "User exist ", user });
+};
+//edit user details
+const edituser = async (req, res, next) => {
+  const { name, email } = req.body;
+  const userId = req.params.id;
+  let user;
+
+  try {
+    user = await User.findByIdAndUpdate(userId, {
+      name,
+      email,
+    });
+  } catch (e) {
+    return console.error("Problem in server edit user", e);
+  }
+
+  if (!user) {
+    return res.status(500).json({ message: "Unable to Update The blog" });
+  }
+  return res.status(200).json({ message: "User Updated ", user });
 };
 
 //Register New User
@@ -113,4 +145,12 @@ const deleteuser = async (req, res, next) => {
     .json({ message: "User Deleted successfully", check: true });
 };
 
-module.exports = { getUser, registertUser, loginUser, getuserbyid, deleteuser };
+module.exports = {
+  getUser,
+  registertUser,
+  loginUser,
+  getuserbyid,
+  deleteuser,
+  getmarchents,
+  edituser,
+};

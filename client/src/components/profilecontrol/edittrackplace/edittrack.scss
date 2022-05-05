@@ -1,0 +1,44 @@
+.track-container {
+  form {
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    input {
+      margin: 20px 0;
+      width: 80%;
+      padding: 20px;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      border-bottom: 2px solid teal;
+      color: teal;
+      font-size: 20px;
+      outline: 0 0 1px 0;
+      &::selection {
+        background: teal;
+        color: white;
+      }
+      &::placeholder {
+        color: teal;
+      }
+      &:focus {
+        border-bottom: 2px solid teal;
+      }
+    }
+    button {
+      border: none;
+      padding: 10px 20px;
+      background-color: teal;
+      color: #fff;
+      border-radius: 5px;
+      transition: 0.4s ease all;
+      &:hover {
+        background-color: transparent;
+        color: #000;
+        border: 1px solid tomato;
+      }
+    }
+  }
+}

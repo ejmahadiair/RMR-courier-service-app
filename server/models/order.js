@@ -6,22 +6,22 @@ const Schema = mongoose.Schema;
 const orderSchema = new Schema({
   type: {
     type: String,
-    required: true,
   },
   city: {
     type: String,
   },
   area: {
     type: String,
-    required: true,
   },
   darea: {
     type: String,
-    required: true,
   },
   charge: {
     type: Number,
-    required: true,
+  },
+  track: {
+    type: String,
+    default: "It's on process",
   },
   date: {
     type: Date,
@@ -32,12 +32,10 @@ const orderSchema = new Schema({
     enum: ["panding", "process", "ongoing", "complet"],
     default: "panding",
   },
-  user: [
-    {
-      type: mongoose.Types.ObjectId,
-      ref: "User",
-    },
-  ],
+  user: {
+    type: mongoose.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 module.exports = mongoose.model("Order", orderSchema);

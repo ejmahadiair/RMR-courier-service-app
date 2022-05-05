@@ -3,11 +3,12 @@ import { EditOutlined, DeleteForever } from "@material-ui/icons";
 import "./user.scss";
 import Edit from "../editprofile/Edit";
 import Magic from "../magic/Magic";
-const User = () => {
+const User = ({ setIsedit }) => {
   const [isuseedit, setUseredit] = useState(false);
   const [magic, setmagic] = useState(false);
   const [check, setCheck] = useState(false);
   const [user, setUser] = useState([]);
+  const [hasid, setHasid] = useState("");
 
   const getalluser = async () => {
     const res = await fetch("http://localhost:5000/api/user/", {
@@ -47,6 +48,12 @@ const User = () => {
       setCheck(false);
     }
   }, [check]);
+
+  const editme = (id) => {
+    setUseredit(true);
+    setIsedit(false);
+    setHasid(id);
+  };
   return (
     <>
       {!isuseedit ? (
@@ -67,7 +74,7 @@ const User = () => {
                   <div className="block update">
                     <EditOutlined
                       className="edit"
-                      onClick={() => setUseredit(true)}
+                      onClick={() => editme(item._id)}
                     />
                   </div>
                   <div
@@ -82,7 +89,7 @@ const User = () => {
         </>
       ) : (
         <>
-          <Edit />
+          <Edit hasid={hasid} />
         </>
       )}
       {magic && <Magic magic={magic} setmagic={setmagic} />}

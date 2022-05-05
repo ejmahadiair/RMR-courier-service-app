@@ -1,15 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
-import {} from "react-router-dom";
-import "./place.scss";
-const Place = ({ setIsplace }) => {
+import "./editorder.scss";
+const Editorder = ({ setMyorder, editid }) => {
   const [incity, setIncity] = useState(true);
   const [value, setValue] = useState(" ");
   const [arrvlaue, setArrvalue] = useState("");
   const [arrvlaue2, setArrvalue2] = useState("");
-  const [isweight, setIsWeight] = useState(false);
-  const [weightSub, setweightSub] = useState(true);
-  const [charge, setCharge] = useState(0);
-  const [tost, setTost] = useState(true);
 
   //new job
   const [ptype, setPtype] = useState("");
@@ -18,34 +13,6 @@ const Place = ({ setIsplace }) => {
   const [darea, setDarea] = useState("");
 
   console.log("arearoll: ", arearoll);
-
-  const weightpart = () => {
-    if (incity) {
-      setCharge(30);
-      if (arrvlaue === "" || arrvlaue === " ") {
-        setIsWeight(false);
-        setweightSub(true);
-      } else {
-        setIsWeight(true);
-        setweightSub(false);
-      }
-    } else {
-      setCharge(70);
-      if (arrvlaue2 === "" || arrvlaue2 === " ") {
-        setIsWeight(false);
-        setweightSub(true);
-      } else {
-        setIsWeight(true);
-        setweightSub(false);
-      }
-    }
-  };
-
-  useEffect(() => {
-    setTimeout(() => {
-      setTost(false);
-    }, 2000);
-  }, []);
 
   const fdata = useCallback(async () => {
     if (incity) {
@@ -95,8 +62,8 @@ const Place = ({ setIsplace }) => {
   try {
     orderSubmit = async (e) => {
       e.preventDefault();
-      const res = await fetch("http://localhost:5000/api/order/", {
-        method: "POST",
+      const res = await fetch(`http://localhost:5000/api/order/${editid}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
@@ -105,13 +72,12 @@ const Place = ({ setIsplace }) => {
           city: arearoll,
           area: value,
           darea: darea,
-          charge: charge,
-          user: localStorage.getItem("userId"),
         }),
       });
       const data = await res.json();
       console.log("dalivery order: ", data);
-      alert(data.message);
+      alert("order Updated successfully");
+      setMyorder(false);
     };
   } catch (e) {
     alert(
@@ -122,8 +88,6 @@ const Place = ({ setIsplace }) => {
   return (
     <>
       <div className="place-container">
-        {tost && <div className="msg">You are acting as a Person</div>}
-
         <h1>PLACE YOUR DALIVARY</h1>
         <form onSubmit={orderSubmit}>
           <h2>Select Product Type</h2>
@@ -226,32 +190,8 @@ const Place = ({ setIsplace }) => {
             </div>
           )}
 
-          {isweight ? (
-            <div>
-              {incity ? (
-                <div>Dalivery charge is : {charge}</div>
-              ) : (
-                <div>Dalivery charge is : {charge} </div>
-              )}
-            </div>
-          ) : (
-            <h3>{value === "" && "Please fill the exect location box"}</h3>
-          )}
-
           <div className="buttons">
-            {weightSub && (
-              <button type="button" onClick={weightpart}>
-                Submit
-              </button>
-            )}
-            {!weightSub && <button type="submit">Conferm order</button>}
-            <button
-              type="button"
-              onClick={() => setIsplace(false)}
-              style={{ background: "tomato" }}
-            >
-              Cancle
-            </button>
+            <button type="submit">Update Now</button>
           </div>
         </form>
       </div>
@@ -259,4 +199,4 @@ const Place = ({ setIsplace }) => {
   );
 };
 
-export default Place;
+export default Editorder;

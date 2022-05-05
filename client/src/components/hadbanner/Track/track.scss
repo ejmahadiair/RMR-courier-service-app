@@ -11,12 +11,17 @@
       padding: 15px;
       border: none;
     }
-    button {
+    .button {
       width: 22%;
       padding: 15px;
       border: none;
       background-color: #d40511;
       color: white;
+      text-decoration: none;
+      .for-prop {
+        position: absolute;
+        display: none;
+      }
     }
   }
 }

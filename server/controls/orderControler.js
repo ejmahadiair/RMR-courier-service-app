@@ -98,22 +98,23 @@ const placeOrder = async (req, res, next) => {
   }
   return res
     .status(200)
-    .json({ message: "Dalivery paced successfully ", newOrder });
+    .json({
+      message: `Dalivery paced successfully. Please remember your order id ${newOrder._id}`,
+      newOrder,
+    });
 };
 
 //edit order details
 const updateOrder = async (req, res, next) => {
   let order;
-  const orderId = req.body.params;
-  const { type, city, area, darea, charge, date } = req.body;
+  const orderId = req.params.id;
+  const { type, city, area, darea } = req.body;
   try {
     order = await Order.findByIdAndUpdate(orderId, {
       type,
       city,
       area,
       darea,
-      charge,
-      date,
     });
   } catch (e) {
     return console.log("Problem in server updateOrder ", e);
@@ -129,29 +130,67 @@ const updateOrder = async (req, res, next) => {
     .json({ message: "Order Details Updated Successfully ", order });
 };
 
+//edit status by aprove
+const aproveorderbyadmin = async (req, res, next) => {
+  let order;
+  const id = req.params.id;
+  try {
+    order = await Order.findByIdAndUpdate(id, {
+      status: req.body.status,
+    });
+  } catch (e) {
+    return console.log("problem in server aporve order by admin: ", e);
+  }
+  if (!order) {
+    return res.status(400).json({ message: "Unable to proced" });
+  }
+  return res.status(200).json({ message: "Order on process ", order });
+};
+//Update track
+const updateTrack = async (req, res, next) => {
+  let track;
+  const id = req.params.id;
+
+  try {
+    track = await Order.findByIdAndUpdate(id, {
+      track: req.body.track,
+    });
+  } catch (e) {
+    return console.log("Problem in server update Track address ", e);
+  }
+  if (!track) {
+    return res.status(500).json({ message: "Unable to Update" });
+  }
+  return res
+    .status(200)
+    .json({ message: "Track Updated successfully ", track });
+};
+
 //delete order
 const deleteOrder = async (req, res, next) => {
   const orderId = req.params.id;
-  let order;
-  let orderuser;
+  let orders;
+  let userorders;
   try {
-    orderuser = await Order.findById(orderId);
+    userorders = await Order.findById(orderId);
   } catch (e) {
     return console.log("Problme in server get delete order user ", e);
   }
+
   try {
-    if (orderuser.user) {
-      order = await Order.findByIdAndDelete(orderId).populate("user");
-      await order.user.order.pull(order);
-      await order.user.save();
+    if (userorders.user != null) {
+      orders = await Order.findByIdAndDelete(orderId).populate("user");
+
+      await orders.user.order.pull(orders);
+      await orders.user.save();
     } else {
-      order = await Order.findByIdAndDelete(orderId);
+      orders = await Order.findByIdAndDelete(orderId);
     }
   } catch (e) {
     return console.log("Problme in server Delete Order ", e);
   }
-  console.log("order detail: ", order);
-  if (!order) {
+
+  if (!orders) {
     return res.status(500).json({ message: "Unable to delete" });
   }
   return res
@@ -165,4 +204,6 @@ module.exports = {
   placeOrder,
   updateOrder,
   deleteOrder,
+  aproveorderbyadmin,
+  updateTrack,
 };
