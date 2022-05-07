@@ -10,12 +10,15 @@ const {
   deleteuser,
   getmarchents,
   edituser,
+  getdman,
 } = require("../controls/userControler");
 
 const Userrouter = express.Router();
 
 Userrouter.get("/", getUser);
 Userrouter.get("/marchent", getmarchents);
+//get dalivery man
+Userrouter.get("/dman", getdman);
 //getspacific user details
 Userrouter.post("/id", getuserbyid);
 //edit user details

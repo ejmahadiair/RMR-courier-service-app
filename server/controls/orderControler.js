@@ -96,12 +96,10 @@ const placeOrder = async (req, res, next) => {
   } catch (e) {
     return console.log("Problem in server ordersave ", e);
   }
-  return res
-    .status(200)
-    .json({
-      message: `Dalivery paced successfully. Please remember your order id ${newOrder._id}`,
-      newOrder,
-    });
+  return res.status(200).json({
+    message: `Dalivery paced successfully. You can change or delete your order within 3 hours. Please remember your order id ${newOrder._id}`,
+    newOrder,
+  });
 };
 
 //edit order details

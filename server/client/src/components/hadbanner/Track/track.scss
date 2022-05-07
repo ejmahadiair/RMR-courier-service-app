@@ -1,0 +1,27 @@
+.tracker {
+  width: 100%;
+
+  form {
+    padding: 2px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #fff;
+    input {
+      width: 78%;
+      padding: 15px;
+      border: none;
+    }
+    .button {
+      width: 22%;
+      padding: 15px;
+      border: none;
+      background-color: #d40511;
+      color: white;
+      text-decoration: none;
+      .for-prop {
+        position: absolute;
+        display: none;
+      }
+    }
+  }
+}

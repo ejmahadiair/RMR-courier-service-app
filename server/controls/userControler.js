@@ -31,6 +31,19 @@ const getmarchents = async (req, res, next) => {
   }
   return res.status(200).json({ muser });
 };
+//get marchents/company
+const getdman = async (req, res, next) => {
+  let muser;
+  try {
+    muser = await User.find({ status: "dman" });
+  } catch (e) {
+    return console.log("Problem in server get marchent: ", e);
+  }
+  if (!muser) {
+    return res.status(404).json({ message: "user not found" });
+  }
+  return res.status(200).json({ muser });
+};
 //get spacific user status
 const getuserbyid = async (req, res, next) => {
   let userId = req.body.id;
@@ -153,4 +166,5 @@ module.exports = {
   deleteuser,
   getmarchents,
   edituser,
+  getdman,
 };

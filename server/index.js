@@ -16,8 +16,9 @@ dotenv.config();
 app.use(cors());
 app.use(express.json());
 
-const port = process.env.PORT || 5000;
-const DB = process.env.DB_URL;
+const port = 5000;
+const DB =
+  "mongodb+srv://admin:admin@cluster0.07caq.mongodb.net/RRMExpress?retryWrites=true&w=majority";
 
 try {
   mongoose.connect(DB, {}, () => console.log("Database Connected succesfully"));
@@ -29,4 +30,5 @@ app.use("/api/user", userRouter);
 app.use("/api/area", areaRouter);
 app.use("/api/order", orderRouter);
 
+app.use(express.static("./"));
 app.listen(port, () => console.log("Server listaning on port ", port));

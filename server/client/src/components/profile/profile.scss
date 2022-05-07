@@ -1,0 +1,29 @@
+.dash-container {
+  display: flex;
+  .left {
+    width: 20%;
+
+    height: 100vh;
+    background-color: rgb(28, 28, 28);
+    ul {
+      list-style: none;
+      padding: 20px 0;
+      margin: 20px 0;
+
+      li {
+        padding: 10px;
+        margin: 20px;
+        border-radius: 5px;
+        background-color: teal;
+        color: white;
+        cursor: pointer;
+      }
+    }
+  }
+  .right {
+    background-color: #f1f3f7;
+    width: 80%;
+    height: 100vh;
+    overflow-y: auto;
+  }
+}

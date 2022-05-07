@@ -1,0 +1,35 @@
+.user-order-container {
+  .row {
+    justify-content: center;
+    display: flex;
+
+    .item {
+      align-self: start;
+      width: 300px;
+      margin: 10px;
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 14px -4px #000000;
+      transition: 0.6s ease;
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 2px 2px 14px 0px #000000;
+      }
+      .parmission {
+        display: flex;
+        justify-content: space-between;
+        button {
+          padding: 6px 15px;
+          border: none;
+          border-radius: 7px;
+          background-color: teal;
+          color: white;
+        }
+        .reject {
+          background-color: tomato;
+        }
+      }
+    }
+  }
+}

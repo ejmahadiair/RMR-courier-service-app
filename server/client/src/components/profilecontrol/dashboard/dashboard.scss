@@ -1,0 +1,25 @@
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .row {
+    padding: 10px;
+    justify-content: center;
+    .items {
+      padding: 10px;
+      background-color: white;
+      margin: 10px;
+      width: 220px;
+      border-radius: 10px;
+      .item {
+        display: flex;
+      }
+    }
+  }
+  .welcome {
+    color: teal;
+    font-size: 50px;
+    font-weight: bold;
+    margin: 50px 0;
+  }
+}
